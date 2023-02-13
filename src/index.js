@@ -2,12 +2,14 @@
 exports.__esModule = true;
 var helpers_1 = require("./helpers");
 function crudeInsertionSort(array) {
-    for (var i = 0; i < array.length - 1; i++) {
-        if (array[i] > array[i + 1]) {
-            var greaterValue = array[i];
-            var lesserValue = array[i + 1];
-            array[i] = lesserValue;
-            array[i + 1] = greaterValue;
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array.length; j++) {
+            if (array[i] < array[j]) {
+                var greaterValue = array[i];
+                var lesserValue = array[j];
+                array[i] = lesserValue;
+                array[j] = greaterValue;
+            }
         }
     }
     return array;

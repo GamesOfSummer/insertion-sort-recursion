@@ -4,16 +4,19 @@ import { consoleBuffer, consoleEnd, consoleStart } from "./helpers";
 
 function crudeInsertionSort(array: number[]) {
     
-    for(let i = 0; i < array.length -1; i++)
+    for(let i = 0; i < array.length; i++)
     {
-        if(array[i] > array[i + 1])
+        for(let j = 0; j < array.length; j++)
         {
-            const greaterValue = array[i];
-            const lesserValue = array[i + 1];
-           
-            array[i] = lesserValue;
-            array[i + 1] = greaterValue;
-        }
+            if(array[i] < array[j])
+            {
+                const greaterValue = array[i];
+                const lesserValue = array[j];
+            
+                array[i] = lesserValue;
+                array[j] = greaterValue;
+            }
+        }   
     }
 
     return array;
