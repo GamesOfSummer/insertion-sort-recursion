@@ -25,29 +25,28 @@ function crudeInsertionSort(array: number[]) {
 
 
 
-function recursionInsertionSort(array: number[]) {
+function recursionInsertionSort(array: number[], index : number) {
     
-    if(array.length < 1)
+    if(index > array.length)
     {
         return array;
     }
     else 
     {
 
-        for(let i = 0; i < array.length; i++)
+        for(let i = index; i > 0; i--)
         {
-            if ((array[i] < array[i + 1]))
+            if ((array[i] < array[i - 1]))
             {
                 const lesserValue = array[i];
-                const greaterValue = array[i + 1];
+                const greaterValue = array[i - 1];
                
                 array[i] = greaterValue;
-                array[i + 1] = lesserValue;
+                array[i - 1] = lesserValue;
             }
         }
 
-        const value = array.pop();
-        return [value].concat(recursionInsertionSort(array));
+        return recursionInsertionSort(array, index + 1);
     }
 }
 
@@ -57,7 +56,8 @@ consoleStart();
 console.log(crudeInsertionSort([6,3,2,0,13]));
 console.log(crudeInsertionSort([36,110,42,2]));
 
-// console.log(recursionInsertionSort([36,11,44,22,44,99,11]));
+console.log(recursionInsertionSort([6,3,2,0,13], 0));
+console.log(recursionInsertionSort([36,110,42,2], 0));
 
 consoleEnd();
 consoleBuffer();
