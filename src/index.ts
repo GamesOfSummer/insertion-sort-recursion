@@ -2,26 +2,27 @@ import { consoleBuffer, consoleEnd, consoleStart } from "./helpers";
 
 
 
-function crudeSort(array: number[], n: number) {
+function crudeInsertionSort(array: number[]) {
     
-    if(n === 0)
+    for(let i = 0; i < array.length -1; i++)
     {
-        return array[n];
+        if(array[i] > array[i + 1])
+        {
+            const greaterValue = array[i];
+            const lesserValue = array[i + 1];
+           
+            array[i] = lesserValue;
+            array[i + 1] = greaterValue;
+        }
     }
-    else if (array[n] < crudeSort(array, n - 1))
-    {
-        return array[n];
-    }
-    else
-    {
-        return crudeSort(array, n-1);
-    }
+
+    return array;
 
 }
 
 
 
-function bubbleSort(array: number[]) {
+function recursionInsertionSort(array: number[]) {
     
     if(array.length < 1)
     {
@@ -43,26 +44,19 @@ function bubbleSort(array: number[]) {
         }
 
         const value = array.pop();
-        return [value].concat(bubbleSort(array));
+        return [value].concat(recursionInsertionSort(array));
     }
 }
 
 
-
-
 consoleStart();
 
+console.log(crudeInsertionSort([6,3,2,0,13]));
+console.log(crudeInsertionSort([36,110,42,2]));
 
-console.log(crudeSort([6,3,2,0,13], 3));
-console.log(crudeSort([36,110,42,2], 1));
-
-
-
-console.log(bubbleSort([36,110,42,2]));
-console.log(bubbleSort([36,11,44,22,44,99,11]));
+// console.log(recursionInsertionSort([36,11,44,22,44,99,11]));
 
 consoleEnd();
-
 consoleBuffer();
 
 export {};

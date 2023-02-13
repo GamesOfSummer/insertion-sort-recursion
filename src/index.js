@@ -1,18 +1,18 @@
 "use strict";
 exports.__esModule = true;
 var helpers_1 = require("./helpers");
-function crudeSort(array, n) {
-    if (n === 0) {
-        return array[n];
+function crudeInsertionSort(array) {
+    for (var i = 0; i < array.length - 1; i++) {
+        if (array[i] > array[i + 1]) {
+            var greaterValue = array[i];
+            var lesserValue = array[i + 1];
+            array[i] = lesserValue;
+            array[i + 1] = greaterValue;
+        }
     }
-    else if (array[n] < crudeSort(array, n - 1)) {
-        return array[n];
-    }
-    else {
-        return crudeSort(array, n - 1);
-    }
+    return array;
 }
-function bubbleSort(array) {
+function recursionInsertionSort(array) {
     if (array.length < 1) {
         return array;
     }
@@ -26,14 +26,12 @@ function bubbleSort(array) {
             }
         }
         var value = array.pop();
-        return [value].concat(bubbleSort(array));
+        return [value].concat(recursionInsertionSort(array));
     }
 }
 (0, helpers_1.consoleStart)();
-console.log('OUTUPT');
-console.log(crudeSort([6, 3, 2, 0, 13], 3));
-console.log(crudeSort([36, 110, 42, 2], 1));
-console.log(bubbleSort([36, 110, 42, 2]));
-console.log(bubbleSort([36, 11, 44, 22, 44, 99, 11]));
+console.log(crudeInsertionSort([6, 3, 2, 0, 13]));
+console.log(crudeInsertionSort([36, 110, 42, 2]));
+// console.log(recursionInsertionSort([36,11,44,22,44,99,11]));
 (0, helpers_1.consoleEnd)();
 (0, helpers_1.consoleBuffer)();
