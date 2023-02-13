@@ -1,30 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var consoleStart = function () {
-    console.log('\x1b[33m', 'Running test cases...');
-    console.log('');
-};
-var consoleEnd = function () {
-    console.log('\x1b[33m', 'End of test cases...');
-    console.log('\x1b[37m', '');
-    console.log('');
-};
-var consoleBuffer = function () {
-    console.log('--------------------------');
-    console.log('--------------------------');
-    console.log('\n');
-};
-var formatOutput = function (fxn, answer) {
-    var output = fxn;
-    console.log('\x1b[36m%s\x1b[0m', 'Testing function...');
-    if (output === answer) {
-        console.log('\x1b[32m', 'CORRECT :: ' + output + ' === ' + answer);
-    }
-    else {
-        console.log('\x1b[31m', 'WRONG -> Output was ' + output + ', expected ' + answer);
-    }
-    console.log();
-};
+var helpers_1 = require("./helpers");
 function crudeSort(array, n) {
     if (n === 0) {
         return array[n];
@@ -53,10 +29,11 @@ function bubbleSort(array) {
         return [value].concat(bubbleSort(array));
     }
 }
-consoleStart();
+(0, helpers_1.consoleStart)();
+console.log('OUTUPT');
 console.log(crudeSort([6, 3, 2, 0, 13], 3));
 console.log(crudeSort([36, 110, 42, 2], 1));
 console.log(bubbleSort([36, 110, 42, 2]));
 console.log(bubbleSort([36, 11, 44, 22, 44, 99, 11]));
-consoleEnd();
-consoleBuffer();
+(0, helpers_1.consoleEnd)();
+(0, helpers_1.consoleBuffer)();

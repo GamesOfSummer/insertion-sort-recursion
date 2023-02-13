@@ -1,1 +1,1 @@
-Exerccise pulled from a C++ book
+Insertion sort
